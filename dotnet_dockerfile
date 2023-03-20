@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
+
+WORKDIR /usr/src/app
+
+COPY *.csproj .
+
+RUN dotnet restore
+
+COPY . .
+
+RUN dotnet publish -c release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
+
+WORKDIR /usr/src/app/out
+
+COPY --from=build /usr/src/app/out/* ./
+
+ENTRYPOINT ["dotnet", "hrapp.dll"]
