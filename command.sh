@@ -61,3 +61,11 @@ docker run --name name_continer -d -t image:tag
 #run continer and debug
 docker run --name name_continer -d -t image:tag tail -f /dev/null #or
 docker run --name name_continer -d -t image:tag sleep infinity
+
+
+#practical
+docker build -t board:v1
+docker run -it --name test -v ${PWD}:/code -p 9000:8000 -d board:v1 # two way binding
+docker run -it --name test -v ${PWD}:/code:ro -p 9000:8000 -d board:v1 #one way binding using add read_only(ro)
+docker run -it --name test -v ${PWD}:/code:ro -v /src/node_moudls -p 9000:8000 -d board:v1 #one way binding using add read_only(ro) and protect node_moudls
+docker run -it --name test -v ${PWD}/src:/code/src:ro -v -p 9000:8000 -d board:v1 # simplest
