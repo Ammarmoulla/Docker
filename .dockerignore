@@ -2,4 +2,3 @@ venv/
 .venv
 .git
 .gitignore
-python_dockerfile

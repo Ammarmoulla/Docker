@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  node-app:
+    build: 
+      context: .
+      target: development
+    volumes:
+      - ./src:/code/src:ro
+    environment:
+      - NODE_ENV=development
+    command: npm run start-dev
+

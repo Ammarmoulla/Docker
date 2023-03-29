@@ -70,3 +70,7 @@ docker run -it --name test -v ${PWD}:/code:ro -p 9000:8000 -d board:v1 #one way 
 docker run -it --name test -v ${PWD}:/code:ro -v /src/node_moudls -p 9000:8000 -d board:v1 #one way binding using add read_only(ro) and protect node_moudls
 docker run -it --name test -v ${PWD}/src:/code/src:ro -p 9000:8000 -d board:v1 # simplest
 docker run -it --name test -v ${PWD}/src:/code/src:ro -p 9000:8000 --env-file ./.env -d board:v1 # simplest
+docker-compose -f docker-compose-base.yaml -f docker-compose-dev.yaml up -d --build
+docker-compose -f docker-compose-base.yaml -f docker-compose-dev.yaml down
+docker-compose -f docker-compose-base.yaml -f docker-compose-prod.yaml up -d --build
+docker-compose -f docker-compose-base.yaml -f docker-compose-prod.yaml down

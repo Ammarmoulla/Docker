@@ -1,9 +1,10 @@
 version: "3.9"
 services:
   django-app:
+    image:
+    container_name: django-app-continer
     env_file:
       - ./.env
-    container_name: django-app-continer
     build: .
     volumes:
       - .:/code
